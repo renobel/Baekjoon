@@ -1,13 +1,15 @@
 import sys
 
-word_list = {}
 word = sys.stdin.readline().rstrip()
-for i in range(len(word)): 
-    part = ord(word[i])
-    if part > 64 and part < 96:
-        part += 32
-    if part in word_list:
-        word_list[part] += 1
-    else:
-        word_list[part] = 1
+word_list = list(set(word))
+result = []
 
+for i in word_list:
+    num = word_list.count(i)
+    result.append(num)
+
+if result.count(max(result))>=2:
+    print("?")
+else:
+    print(word_list[result.index(max(result))])
+#아 개어렵다 ㅠ
